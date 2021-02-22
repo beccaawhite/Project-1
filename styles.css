@@ -50,9 +50,14 @@ body {
     background-color: #b7b7a4;
     font-size: 20px;
     border-radius: 30%;
-  
 }
 .reset {
+    color: black; 
+    background-color: #b7b7a4;
+    font-size: 20px;
+    border-radius: 30%;
+}
+.next-turn {
     color: black; 
     background-color: #b7b7a4;
     font-size: 20px;
