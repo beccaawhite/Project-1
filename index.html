@@ -9,8 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="sei-2-08-2021/resources/card-deck-css/css">
-    <link rel="stylesheet" href="sei-2-08-2021/resources/card-deck-css/images/">
+    <link rel="stylesheet" href="card-deck-css/css/cardstarter.css">
     
     <script defer src="main.js"></script>
 </head>
@@ -36,17 +35,20 @@
             <div id="player-score">Count: 0</div>
         </div>
 
-        <div class="decks placeholder">Middle Deck</div>
-        <div class="decks computer-deck">Comp Deck</div>
-        <div class="decks player-deck">Player Deck</div>
+        <div class="decks placeholder" id="shuffled-deck-container">Middle Deck</div>
+        <div class="decks computer-deck" id="computerHand">Comp Deck</div>
+        <div class="decks player-deck" id="playerHand">Player Deck</div>
 
-        <div class="deck">
+       
+       <!-- to see how card back and assigning DOM works -->
+        <!-- <div class="deck">
+            <div class="card back"></div>
             
-        </div>
+        </div> -->
 
         <div class="buttons">
             <button class="deal">Deal Cards</button>
-            <button class="next-turn">Next Turn</button>
+            <button class="next-turn">Draw Card</button>
             <button class="reset">Reset Game</button>
         </div>
 
