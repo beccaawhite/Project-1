@@ -50,14 +50,15 @@ function init() {
     // initialize scores // doesn't change here 
     
 
-    getCards();
-    shuffle();
+    
     render();
 }
 
 function render() {
     console.log("render is firing");
 
+    getCards();
+    shuffle();
 
 }
 
@@ -79,17 +80,14 @@ function getCards() {
 }
 
 
+// function to update DOM with card faces, called in dealCards()
 function renderDeck(deck, container){
     container.innerHTML = [];
     const cardsHtml = deck.reduce(function(html, card){
         return html + `<div class="card ${card.face}"></div>`
     }, []);
-
     container.innerHTML = cardsHtml;
-
 }
-
-
 
 function shuffle() {
     const tempDeck = [...masterDeck];
@@ -104,16 +102,9 @@ function shuffle() {
     console.log(shuffledDeck)
 }
 
-
-
-
-
-// function to split master deck into two players
+// function to split master deck into two players, render in DOM
 function dealCards() {
-    
     console.log("dealing the cards...");
-    
-
     for(let i = 0; i < shuffledDeck.length; i++){
         if(i%2){
             playerdeck.push(shuffledDeck[i]);
@@ -130,7 +121,6 @@ function dealCards() {
 
 }
 
-
 // function to update the DOM with the length of each players deck array
 function updateCardCount() {
     document.getElementById("player-score").innerHTML = "Count: " + playerdeck.length,
@@ -140,30 +130,69 @@ function updateCardCount() {
 
 
 
+function nextTurn(){
+    //check for winner
+    if((playerdeck.length === 52) || (computerdeck.length === 52)){
+        console.log("Game Over");
+        // if player wins
+        if(playerdeck.length === 52){
+            // style winner to change colors and increase px
+        } 
+        // if computer wins
+        else {
+            // style winner to change color and increase px
+        }
+    } 
+    
+    // no winner, so play round
+    else {
+        // if card values are the same, WAR
+        if(playerdeck[0].value === computerdeck[0].value){
+            // call war function
+        } 
+        // if not, compare values function
+        else {
+            compareValues(playerdeck, computerdeck);
+            console.log(playerdeck);
+            console.log(computerdeck);
+        }
+    }
+}
+
+// function war(pdeck, cdeck){
+//     // play next 3 cards
+
+//     // compare values of two cards
 
 
+//     // greater value push it into arr
 
-// once cards are connected to html and cards are placed on the right webpage spot
+// }
 
-// create function for next turn
-    // should take card on top and place it in middle face up
-           // playerdeck.pop()
-           // computerdeck.pop()
-    // compare cards value
-        // if player value greater than copmuter, push cards to end of player array
-        // if computer value greater than player, push cards to end of computer array
-        // if values are the same, place three more cards face up
-            // repeat process until winner
+function compareValues(pdeck, cdeck){
+    if(playerdeck[0].value > computerdeck[0].value){
+        console.log(playerdeck);
+        console.log(computerdeck);
+        let p1 = playerdeck.shift();
+        let c1 = computerdeck.shift();
+        playerdeck.push(p1);
+        playerdeck.push(c1);
+        // return playerdeck
+        renderDeck(playerdeck, playerContainer);
+        renderDeck(computerdeck, computerContainer)
+        
+    } else {
+        let play1 = playerdeck.shift();
+        let comp1 = computerdeck.shift();
+        computerdeck.push(comp1);
+        computerdeck.push(play1);
+        // return computerdeck
+        renderDeck(playerdeck, playerContainer);
+        renderDeck(computerdeck, computerContainer) 
+    }
+    updateCardCount();
+}
 
-
-// create function for winner
-    // if player or computer deck count === 52, game over
-    // create alert (or something) that says which player won
-    // style the winning player 
-
-    // if(playerdeck.length === 52){
-    //     console.log("winner!")
-    // } 
 
 
 // fix reset game to work
