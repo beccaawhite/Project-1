@@ -35,6 +35,9 @@ const computerContainer = document.getElementById("computerHand");
 document.querySelector(".deal")
     .addEventListener("click", dealCards);
 
+document.querySelector(".next-turn")
+    .addEventListener("click", nextTurn); 
+
 // document.querySelector(".reset")
 //     .addEventListener("click", init)
 
@@ -127,11 +130,16 @@ function updateCardCount() {
     document.getElementById("computer-score").innerHTML = "Count: " + computerdeck.length
 }
 
-
+function checkWinner(){
+    while((playerdeck.length != 52) && (computerdeck.length != 52)){
+        nextTurn();
+    }
+}
 
 
 function nextTurn(){
     //check for winner
+    
     if((playerdeck.length === 52) || (computerdeck.length === 52)){
         console.log("Game Over");
         // if player wins
