@@ -130,7 +130,9 @@ function updateCardCount() {
     document.getElementById("computer-score").innerHTML = "Count: " + computerdeck.length
 }
 
-function checkWinner(){
+function chickenDiner(winner){
+    // style winner to change color and increase px
+    // change count to Winner!
     while((playerdeck.length != 52) && (computerdeck.length != 52)){
         nextTurn();
     }
@@ -138,17 +140,17 @@ function checkWinner(){
 
 
 function nextTurn(){
-    //check for winner
     
+    //check for winner
     if((playerdeck.length === 52) || (computerdeck.length === 52)){
         console.log("Game Over");
-        // if player wins
+        
         if(playerdeck.length === 52){
-            // style winner to change colors and increase px
+
         } 
-        // if computer wins
+        // computer wins
         else {
-            // style winner to change color and increase px
+            
         }
     } 
     
@@ -157,6 +159,7 @@ function nextTurn(){
         // if card values are the same, WAR
         if(playerdeck[0].value === computerdeck[0].value){
             // call war function
+            compareWar(playerdeck, computerdeck);
         } 
         // if not, compare values function
         else {
@@ -167,17 +170,58 @@ function nextTurn(){
     }
 }
 
-// function war(pdeck, cdeck){
-//     // play next 3 cards
 
-//     // compare values of two cards
+function compareWar(deck1, deck2){
+    let warplay = [];
+    let warcomp = [];
+    // iterate and get 3 additional cards from each player
+    for (let i = 0; i < 4; i++){
+      let p1 = playerdeck.shift();
+      warplay.push(p1);
+    }
+    for (let i = 0; i < 4; i++){
+      let c1 = computerdeck.shift();
+      warcomp.push(c1)
+    }
+    // to see the war decks and whats being compared 
+    console.log(`warplay:`)
+    console.log(warplay)
+    console.log(`warcomp:`)
+    console.log(warcomp);
+    // compare the last placed card (last index)
+    // whichever is larger in value, add array to end of deck
+    if(warplay[3].value > warcomp[3].value){
+        addArray(warplay, playerdeck);
+        addArray(warcomp, playerdeck);
+        console.log("player deck won")
+        console.log(playerdeck);
+    } 
+    else {
+        addArray(warcomp, computerdeck);
+        addArray(warplay, computerdeck);
+        console.log("computer deck won")
+        console.log(computerdeck);
+    }
+    renderDeck(playerdeck, playerContainer);
+    renderDeck(computerdeck, computerContainer);
+    updateCardCount();
+}
 
+// function to add won array to end of deck
+// otherwise deck gets added to array in an object
+function addArray(start, end){
+    let arrIdx = 0;
+    while(arrIdx < start.length){
+        end.push(start[arrIdx]);
+        arrIdx += 1
+    }
+    return end
+}
 
-//     // greater value push it into arr
-
-// }
-
+// function to see which players card has the bigger value
 function compareValues(pdeck, cdeck){
+    // if players top card is greater than comps top card
+    // add both cards to end of player card array
     if(playerdeck[0].value > computerdeck[0].value){
         console.log(playerdeck);
         console.log(computerdeck);
@@ -185,21 +229,20 @@ function compareValues(pdeck, cdeck){
         let c1 = computerdeck.shift();
         playerdeck.push(p1);
         playerdeck.push(c1);
-        // return playerdeck
-        renderDeck(playerdeck, playerContainer);
-        renderDeck(computerdeck, computerContainer)
-        
-    } else {
+    } 
+    // if computers top card is greater than players top card
+    // add both cards to end of computer card array
+    else {
         let play1 = playerdeck.shift();
         let comp1 = computerdeck.shift();
         computerdeck.push(comp1);
-        computerdeck.push(play1);
-        // return computerdeck
-        renderDeck(playerdeck, playerContainer);
-        renderDeck(computerdeck, computerContainer) 
+        computerdeck.push(play1); 
     }
+    renderDeck(playerdeck, playerContainer);
+    renderDeck(computerdeck, computerContainer) 
     updateCardCount();
 }
+
 
 
 
