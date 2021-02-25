@@ -39,9 +39,7 @@ body {
 }
 
 
-#shuffled-deck-container{
-    
-}
+
 
 .buttons { 
     /* border: 2px solid #6b705c; Come back to fix this border container issue */
@@ -84,14 +82,18 @@ body {
     grid-row: 3 / 3;
 }
 
-.computer-deck {
+
+/* where the overflow is */
+#computerHand {
     grid-column: 4 / 5;
     grid-row: 3 / 3;
+    overflow: hidden;
 }
 
-.player-deck {
+#playerHand {
     grid-column: 2 / 3;
     grid-row: 3 / 3;
+    overflow: hidden;
 }
 
 #computer-score {

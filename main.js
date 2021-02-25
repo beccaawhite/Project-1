@@ -3,6 +3,7 @@
 
 const suits = ["h", "s", "d", "c"]; // naming it this way so that it matches the css file
 const ranks = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "J", "Q", "K", "A"];
+const vals = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14"];
 
 const masterDeck = getCards();
 
@@ -15,7 +16,6 @@ let winner;
 let deck;
 let shuffledDeck;
 
-let flipped = false;
 
 
 /*----- cached element references -----*/ //what you SEE changing
@@ -51,8 +51,8 @@ init();
 function init() {
     // initialize scores // doesn't change here 
     
-
     
+
     render();
 }
 
@@ -69,37 +69,27 @@ function getCards() {
     const carddeck = [];
     suits.forEach(function(suit){
         ranks.forEach(function(rank){
+            let value = Number(rank)
+            // if this is J --> value: 11
+            if (rank == "J"){
+                value = 11
+            } else if (rank == "Q"){
+                value = 12
+            } else if (rank == "K"){
+                value = 13
+            } else if (rank == "A") {
+                value = 14
+            }
             carddeck.push({
                 //the "face" property maps to the lib CSS classes for cards .card.dA,
                 face: `${suit}${rank}`, 
                 // Setting the value property for a game of war
-                value: Number(rank) || (rank === "J" ? 11 : 11) || (rank === "Q" ? 12 : 12)
-
-
+                value: value,
+    
             })
         })
     }) 
-    return carddeck;
-}
-
-function faceCards(rank){
-    // Jacks
-    if(rank === "J"){
-        rank === "J" ? 11 : 11
-    }
-    // Queen
-    else if (rank === "Q"){
-        rank === "Q" ? 12 : 12
-    }
-    // King
-    else if(rank === "K"){
-        rank === "K" ? 13 : 13
-    }
-    // Aces
-    else {
-        rank === "A" ? 14 : 14
-    }
-
+    return carddeck
 }
 
 
@@ -110,6 +100,7 @@ function renderDeck(deck, container){
         return html + `<div class="card ${card.face}"></div>`
     }, []);
     container.innerHTML = cardsHtml;
+    
 }
 
 function shuffle() {
@@ -136,12 +127,18 @@ function dealCards() {
         }
     }
     updateCardCount();
-    console.log(playerdeck)
-    console.log(computerdeck)
-    // render each container to have DOM element cards
-    renderDeck(playerdeck, playerContainer);
-    renderDeck(computerdeck, computerContainer);
+    playerContainer.classList.add("back-blue");
+    playerContainer.classList.add("card");
+    computerContainer.classList.add("back-blue");
+    computerContainer.classList.add("card");
+}
 
+// function to get rid of back of card 
+function removeClass(){
+    playerContainer.classList.remove("back-blue");
+    playerContainer.classList.remove("card");
+    computerContainer.classList.remove("back-blue");
+    computerContainer.classList.remove("card");
 }
 
 // function to update the DOM with the length of each players deck array
@@ -171,48 +168,38 @@ function chickenDinner(){
 }
 
 
-function nextTurn(){
-    
-    // if((playerdeck.length === 52) || (computerdeck.length === 52)){
-    //     // to produce and 
-    // } 
-    // // no winner, so play round
 
+
+function nextTurn(){
+    removeClass();
+
+    console.log(playerdeck[0].value)
+    console.log(computerdeck[0].value)
     // if card values are the same, WAR
     if (playerdeck[0].value === computerdeck[0].value){
-        // call war function if they have array length greater than 4 
-        compareWar(playerdeck, computerdeck);
-        // call small war function if either deck is 
+        alert("WAR!")
+        if((playerdeck.length < 4) || (computerdeck.length < 4)){
+            // call small war function if either deck is 
+            smallWar(playerdeck, computerdeck)
+        }
+        else {
+            // call war function if they have array length greater than 4 
+            bigWar(playerdeck, computerdeck);
+        }
+        
     } 
     else {
         compareValues(playerdeck, computerdeck);
         console.log(playerdeck);
         console.log(computerdeck);
     }
-    
-    // {
-    //     // if card values are the same, WAR
-    //     if(playerdeck[0].value === computerdeck[0].value){
-    //         // call war function
-    //         compareWar(playerdeck, computerdeck);
-    //     } 
-    //     // if not, compare values function
-    //     else {
-    //         compareValues(playerdeck, computerdeck);
-    //         console.log(playerdeck);
-    //         console.log(computerdeck);
-    //     }
-    // }
+    // check for winner once every turn is taken
     chickenDinner();
 }
 
-// function smallWar(){
-//     let warplay = [];
-//     let warcomp = [];
 
-// }
 
-function compareWar(deck1, deck2){
+function bigWar(deck1, deck2){
     let warplay = [];
     let warcomp = [];
     // iterate and get 3 additional cards from each player
