@@ -6,6 +6,39 @@ body {
    
 }
 
+.game-rules {
+    background-color: #b7b7a4;
+    font-size: 25px;
+    height: 100px;
+    width: 700px;
+    position: relative;
+    text-align: center;
+    margin: 30px auto;
+    padding: 20px;
+    border: 3px solid #6b705c;
+    border-radius: 7%;
+    /* display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%; */
+}
+.game-rules > p {
+    visibility: hidden;
+}
+#rules:hover {
+    background-color: #b7b7a4;
+    font-size: 25px;
+    height: 100px;
+    width: 700px;
+    position: relative;
+    text-align: center;
+    margin: 30px auto;
+    padding: 20px;
+    border: 3px solid #6b705c;
+    border-radius: 7%;
+    
+}
+
+
 .game-board {
     background-color: #b7b7a4;
     font-size: 20px;
