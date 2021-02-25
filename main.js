@@ -163,6 +163,8 @@ function chickenDinner(){
             computerWinner.style.fontSize = "25px"
             document.getElementById("player-score").innerHTML = "You Lost";
             document.getElementById("computer-score").innerHTML = "WINNER";
+            computerContainer.classList.add("back-blue");
+            computerContainer.classList.add("card");
         }
     }
 }
@@ -171,6 +173,7 @@ function chickenDinner(){
 
 
 function nextTurn(){
+    // takes off the back of card decor
     removeClass();
 
     console.log(playerdeck[0].value)
@@ -178,15 +181,14 @@ function nextTurn(){
     // if card values are the same, WAR
     if (playerdeck[0].value === computerdeck[0].value){
         alert("WAR!")
-        if((playerdeck.length < 4) || (computerdeck.length < 4)){
+        if((playerdeck.length > 3) && (computerdeck.length > 3)){
             // call small war function if either deck is 
-            smallWar(playerdeck, computerdeck)
+            bigWar(playerdeck, computerdeck)
         }
         else {
-            // call war function if they have array length greater than 4 
-            bigWar(playerdeck, computerdeck);
+            smallWar(playerdeck, computerdeck)
         }
-        
+    // card that has greater value, wins    
     } 
     else {
         compareValues(playerdeck, computerdeck);
@@ -198,7 +200,7 @@ function nextTurn(){
 }
 
 
-
+// function for if both players have an additional 3 cards to play
 function bigWar(deck1, deck2){
     let warplay = [];
     let warcomp = [];
@@ -234,6 +236,26 @@ function bigWar(deck1, deck2){
     renderDeck(computerdeck, computerContainer);
     updateCardCount();
 }
+
+// function for if one deck doesn't have enough cards for war, they lose
+function smallWar(deck1, deck2){
+    // if player deck is smaller, copmuter gets all the cards
+    if(playerdeck.length < computerdeck.length){
+        addArray(playerdeck, computerdeck)
+        let warcomp = computerdeck.shift();
+        addArray(warcomp, computerdeck)
+        playerdeck = [];
+    } 
+    else{
+      addArray(computerdeck, playerdeck)
+      let warplay = playerdeck.shift();
+      addArray(warplay, playerdeck)
+      computerdeck = [];
+    }
+    console.log(computerdeck)
+    console.log(playerdeck)
+}
+
 
 // function to add won array to end of deck
 // otherwise deck gets added to array in an object

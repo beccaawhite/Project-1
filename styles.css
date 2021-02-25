@@ -74,9 +74,9 @@ body {
     /* opacity: 60%; */
 /* } */
 
-.decks {
+/* .decks {
     border: 1px solid black;
-}
+} */
 .placeholder {
     grid-column: 3 / 4;
     grid-row: 3 / 3;
