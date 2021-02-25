@@ -7,8 +7,6 @@ const ranks = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "J", "Q", "
 const masterDeck = getCards();
 
 
-
-
 /*----- app's state (variables) -----*/ //use JS to reference 
 
 let playerdeck = [];
@@ -26,7 +24,8 @@ let flipped = false;
 const shuffledContainer = document.getElementById('shuffled-deck-container');
 const playerContainer = document.getElementById("playerHand");
 const computerContainer = document.getElementById("computerHand");
-
+const computerWinner = document.querySelector(".computer ");
+const playerWinner = document.querySelector(".player");
 
 
 
@@ -74,12 +73,33 @@ function getCards() {
                 //the "face" property maps to the lib CSS classes for cards .card.dA,
                 face: `${suit}${rank}`, 
                 // Setting the value property for a game of war
-                value: Number(rank) || (rank === "J" ? 11 : 11)
-                // --------------------------------------- all face cards have a vlaue of 11, come back to fix---------------- // 
+                value: Number(rank) || (rank === "J" ? 11 : 11) || (rank === "Q" ? 12 : 12)
+
+
             })
         })
     }) 
     return carddeck;
+}
+
+function faceCards(rank){
+    // Jacks
+    if(rank === "J"){
+        rank === "J" ? 11 : 11
+    }
+    // Queen
+    else if (rank === "Q"){
+        rank === "Q" ? 12 : 12
+    }
+    // King
+    else if(rank === "K"){
+        rank === "K" ? 13 : 13
+    }
+    // Aces
+    else {
+        rank === "A" ? 14 : 14
+    }
+
 }
 
 
@@ -130,46 +150,67 @@ function updateCardCount() {
     document.getElementById("computer-score").innerHTML = "Count: " + computerdeck.length
 }
 
-function chickenDiner(winner){
-    // style winner to change color and increase px
-    // change count to Winner!
-    while((playerdeck.length != 52) && (computerdeck.length != 52)){
-        nextTurn();
+
+// function to call ever turn, if either deck is 52, winner winner chicken dinner
+function chickenDinner(){
+    if((playerdeck.length === 52) || (computerdeck.length === 52)){
+        if(playerdeck.length === 52){
+            playerWinner.style.color = "#ff0054"; 
+            playerWinner.style.fontSize = "25px"
+            document.getElementById("player-score").innerHTML = "YOU WON! ";
+            document.getElementById("computer-score").innerHTML = "Computer Lost";
+
+        }
+        else {
+            computerWinner.style.color = "#ff0054"; 
+            computerWinner.style.fontSize = "25px"
+            document.getElementById("player-score").innerHTML = "You Lost";
+            document.getElementById("computer-score").innerHTML = "WINNER";
+        }
     }
 }
 
 
 function nextTurn(){
     
-    //check for winner
-    if((playerdeck.length === 52) || (computerdeck.length === 52)){
-        console.log("Game Over");
-        
-        if(playerdeck.length === 52){
+    // if((playerdeck.length === 52) || (computerdeck.length === 52)){
+    //     // to produce and 
+    // } 
+    // // no winner, so play round
 
-        } 
-        // computer wins
-        else {
-            
-        }
+    // if card values are the same, WAR
+    if (playerdeck[0].value === computerdeck[0].value){
+        // call war function if they have array length greater than 4 
+        compareWar(playerdeck, computerdeck);
+        // call small war function if either deck is 
     } 
-    
-    // no winner, so play round
     else {
-        // if card values are the same, WAR
-        if(playerdeck[0].value === computerdeck[0].value){
-            // call war function
-            compareWar(playerdeck, computerdeck);
-        } 
-        // if not, compare values function
-        else {
-            compareValues(playerdeck, computerdeck);
-            console.log(playerdeck);
-            console.log(computerdeck);
-        }
+        compareValues(playerdeck, computerdeck);
+        console.log(playerdeck);
+        console.log(computerdeck);
     }
+    
+    // {
+    //     // if card values are the same, WAR
+    //     if(playerdeck[0].value === computerdeck[0].value){
+    //         // call war function
+    //         compareWar(playerdeck, computerdeck);
+    //     } 
+    //     // if not, compare values function
+    //     else {
+    //         compareValues(playerdeck, computerdeck);
+    //         console.log(playerdeck);
+    //         console.log(computerdeck);
+    //     }
+    // }
+    chickenDinner();
 }
 
+// function smallWar(){
+//     let warplay = [];
+//     let warcomp = [];
+
+// }
 
 function compareWar(deck1, deck2){
     let warplay = [];
