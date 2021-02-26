@@ -96,11 +96,10 @@ function shuffle() {
     while (tempDeck.length) {
         // Get a random index for a card still in the tempDeck
         const rndIdx = Math.floor(Math.random() * tempDeck.length);
-        // Note the [0] after splice - this is because splice always returns an array and we just want the card object in that array
+        // The [0] after splice because splice always returns an array and we just want the card object in that array
         shuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
     }
     return shuffledDeck
-    console.log(shuffledDeck)
 }
 
 // function to split master deck into two players, render in DOM
@@ -170,10 +169,6 @@ function nextTurn() {
     removeClass();
     placeholder.innerHTML = ""
     warPlaceholder.innerHTML = ""
-
-    //shows what the values are in whats being compared
-    // console.log(playerdeck[0].value)
-    // console.log(computerdeck[0].value)
 
     // if card values are the same, WAR
     if (playerdeck[0].value === computerdeck[0].value) {

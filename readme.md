@@ -14,7 +14,7 @@ This is a simple card game that is created with HTML, CSS, and JavaScript.
 
 ## Getting Started
 
-To start the game click the "Deal Cards" button. From there you will click "Next" to draw each round. The game will end when one player has all 52 cards. 
+To start the game click the "Deal Cards" button. From there you will click "Draw Card" to draw each round. The game will end when one player has all 52 cards. 
 This game can be played at https://beccaawhite.github.io/Project-1/
 
 
