@@ -21,11 +21,14 @@ let shuffledDeck;
 /*----- cached element references -----*/ //what you SEE changing
 
 // selects middle deck container
-const shuffledContainer = document.getElementById('shuffled-deck-container');
+const placeholder = document.getElementById('placeholder');
+const warPlaceholder = document.getElementById('warPlaceholder');
 const playerContainer = document.getElementById("playerHand");
 const computerContainer = document.getElementById("computerHand");
 const computerWinner = document.querySelector(".computer ");
 const playerWinner = document.querySelector(".player");
+
+
 
 
 
@@ -37,8 +40,10 @@ document.querySelector(".deal")
 document.querySelector(".next-turn")
     .addEventListener("click", nextTurn); 
 
-// document.querySelector(".reset")
-//     .addEventListener("click", init)
+
+//cant get this to reset
+document.querySelector(".reset")
+    .addEventListener("click", init)
 
 
 
@@ -61,6 +66,7 @@ function render() {
 
     getCards();
     shuffle();
+
 
 }
 
@@ -97,7 +103,7 @@ function getCards() {
 function renderDeck(deck, container){
     container.innerHTML = [];
     const cardsHtml = deck.reduce(function(html, card){
-        return html + `<div class="card ${card.face}"></div>`
+        return html + `<div class="card large ${card.face}"></div>`
     }, []);
     container.innerHTML = cardsHtml;
     
@@ -127,17 +133,21 @@ function dealCards() {
         }
     }
     updateCardCount();
-    playerContainer.classList.add("back-blue");
+    playerContainer.classList.add("back-red");
     playerContainer.classList.add("card");
-    computerContainer.classList.add("back-blue");
+    playerContainer.classList.add("large");
+    computerContainer.classList.add("back-red");
     computerContainer.classList.add("card");
+    computerContainer.classList.add("large");
+    
+
 }
 
 // function to get rid of back of card 
 function removeClass(){
-    playerContainer.classList.remove("back-blue");
+    playerContainer.classList.remove("back-red");
     playerContainer.classList.remove("card");
-    computerContainer.classList.remove("back-blue");
+    computerContainer.classList.remove("back-red");
     computerContainer.classList.remove("card");
 }
 
@@ -163,24 +173,32 @@ function chickenDinner(){
             computerWinner.style.fontSize = "25px"
             document.getElementById("player-score").innerHTML = "You Lost";
             document.getElementById("computer-score").innerHTML = "WINNER";
-            computerContainer.classList.add("back-blue");
+            computerContainer.classList.add("back-red");
             computerContainer.classList.add("card");
         }
     }
 }
 
-
-
+function show(){
+    warPlaceholder.innerHTML = "WAR!";
+}
+function showWar(){
+    placeholder.innerHTML = "someone won the war"
+}
 
 function nextTurn(){
     // takes off the back of card decor
     removeClass();
+    placeholder.innerHTML = ""
+    warPlaceholder.innerHTML = ""
 
-    console.log(playerdeck[0].value)
-    console.log(computerdeck[0].value)
+    //shows what the values are in whats being compared
+    // console.log(playerdeck[0].value)
+    // console.log(computerdeck[0].value)
+
     // if card values are the same, WAR
     if (playerdeck[0].value === computerdeck[0].value){
-        alert("WAR!")
+        
         if((playerdeck.length > 3) && (computerdeck.length > 3)){
             // call small war function if either deck is 
             bigWar(playerdeck, computerdeck)
@@ -192,8 +210,6 @@ function nextTurn(){
     } 
     else {
         compareValues(playerdeck, computerdeck);
-        console.log(playerdeck);
-        console.log(computerdeck);
     }
     // check for winner once every turn is taken
     chickenDinner();
@@ -225,12 +241,16 @@ function bigWar(deck1, deck2){
         addArray(warcomp, playerdeck);
         console.log("player deck won")
         console.log(playerdeck);
+        placeholder.innerHTML = "You won the war!"
     } 
     else {
         addArray(warcomp, computerdeck);
         addArray(warplay, computerdeck);
         console.log("computer deck won")
         console.log(computerdeck);
+        placeholder.innerHTML = "Computer won the war"
+        // placeholder.innerHTML = "Computer won the war"
+    
     }
     renderDeck(playerdeck, playerContainer);
     renderDeck(computerdeck, computerContainer);

@@ -15,6 +15,21 @@
 </head>
 <body>
 
+    <div class="game-rules">
+        <div class="game-title">
+            <h2>WAR</h2>
+            <div id="rules">
+                A deck of cards is randomly divided between the computer and you. 
+                Click "Draw Card" to play your next card. If your card is larger in value to the
+                computer's card, then you receive both cards and they will be added to the 
+                end of your deck & vice versa. If your card is the same value to the computers, 
+                then it is war! Three additional cards are pulled and the last card is compared. 
+                Whichever players last card is largest in value, will recieve all cards. The game 
+                ends when one player has all 52 cards. 
+            </div>
+        </div>
+    </div>
+
     <div class="game-board">
         <div class="computer">
             <div class="avatar" id="computer-avatar">
@@ -35,21 +50,15 @@
             <div id="player-score">Count: 0</div>
         </div>
 
-        <!-- <div class="decks placeholder" id="shuffled-deck-container">placeholder</div> -->
+        <div class="decks placeholder" id="placeholder"></div>
+        <div class="decks placeholder" id="warPlaceholder"></div>
         <div class="decks computer-deck" id="computerHand">Comp Deck</div>
         <div class="decks player-deck" id="playerHand">Player Deck</div>
-
-       
-       <!-- to see how card back and assigning DOM works -->
-        <!-- <div class="deck">
-            <div class="card back"></div>
-            
-        </div> -->
 
         <div class="buttons">
             <button class="deal">Deal Cards</button>
             <button class="next-turn">Draw Card</button>
-            <button class="reset">Reset Game</button>
+            <button class="reset">New Game</button>
         </div>
 
 
