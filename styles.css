@@ -18,32 +18,15 @@ body {
     padding: 20px;
     border: 3px solid #6b705c;
     border-radius: 7%;
-    /* display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows: 20% 20% 20% 20% 20%; */
 }
+
 .game-rules > p {
     visibility: hidden;
-}
-#rules:hover {
-    background-color: #b7b7a4;
-    font-size: 25px;
-    height: 100px;
-    width: 700px;
-    position: relative;
-    text-align: center;
-    margin: 30px auto;
-    padding: 20px;
-    border: 3px solid #6b705c;
-    border-radius: 7%;
-    
 }
 
 
 .game-board {
-    /* background-color: #b7b7a4; */
     background-color: #f2e8cf;
-    /* background: linear-gradient(to right, #f7d9c4, #e2cfc4); */
     font-size: 20px;
     height: 800px;
     width: 700px;
@@ -59,7 +42,6 @@ body {
 }
 
 .game-rules {
-    /* background: linear-gradient(to right, #f7d9c4, #e2cfc4); */
     background-color: #f2e8cf;
     font-size: 25px;
     height: 200px;
@@ -96,18 +78,16 @@ h2 {
 
 .fas {
     color: black;
-    /* background-color:  */
     font-size: 80px;
 }
 
 
 
 .buttons { 
-    /* border: 2px solid #6b705c; Come back to fix this border container issue */
     grid-column: 5 / 5;
     grid-row: 5 / 5;
 }
-/* find out why these have to be notated seperately in order to work */
+
 .deal {
     color: black; 
     background-color: #b7b7a4;
@@ -115,7 +95,6 @@ h2 {
     border-radius: 30%;
     padding: 5px;
     margin: 5px;
-
 }
 
 .next-turn {
@@ -145,15 +124,12 @@ h2 {
     font-size: 24px;
 }
 
-/* .decks {
-    border: 1px solid black;
-} */
-
 #placeholder {
     grid-column: 3 / 4;
     grid-row: 3 / 3;
     
 }
+
 #warPlaceholder{
     grid-column: 3 / 4;
     grid-row: 2 / 2;
@@ -162,8 +138,6 @@ h2 {
     align-self: end;
 }
 
-
-/* where the overflow is */
 #computerHand {
     grid-column: 4 / 5;
     grid-row: 3 / 3;

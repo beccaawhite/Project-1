@@ -17,7 +17,6 @@ let shuffledDeck;
 
 /*----- cached element references -----*/ //what you SEE changing
 
-// selects middle deck container
 const placeholder = document.getElementById('placeholder');
 const warPlaceholder = document.getElementById('warPlaceholder');
 const playerContainer = document.getElementById("playerHand");
@@ -132,7 +131,7 @@ function removeClass() {
 // function to update the DOM with the length of each players deck array
 function updateCardCount() {
     document.getElementById("player-score").innerHTML = "Count: " + playerdeck.length,
-        document.getElementById("computer-score").innerHTML = "Count: " + computerdeck.length
+    document.getElementById("computer-score").innerHTML = "Count: " + computerdeck.length
 }
 
 
