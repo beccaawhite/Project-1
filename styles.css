@@ -1,7 +1,8 @@
 
 
 body {
-    background-color: #a5a58d;
+    background-color: #708d81;
+    /* background: linear-gradient(to right, #e2cfc4, #f7d9c4); */
     font-family: 'Open Sans', sans-serif;
    
 }
@@ -40,7 +41,9 @@ body {
 
 
 .game-board {
-    background-color: #b7b7a4;
+    /* background-color: #b7b7a4; */
+    background-color: #f2e8cf;
+    /* background: linear-gradient(to right, #f7d9c4, #e2cfc4); */
     font-size: 20px;
     height: 800px;
     width: 700px;
@@ -48,12 +51,40 @@ body {
     text-align: center;
     margin: 30px auto;
     padding: 20px;
-    border: 3px solid #6b705c;
+    border: 3px solid #373d20;
     border-radius: 7%;
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
     grid-template-rows: 20% 20% 20% 20% 20%;
 }
+
+.game-rules {
+    /* background: linear-gradient(to right, #f7d9c4, #e2cfc4); */
+    background-color: #f2e8cf;
+    font-size: 25px;
+    height: 200px;
+    width: 700px;
+    position: relative;
+    text-align: center;
+    margin:  auto;
+    padding: 10px;
+    border: 3px solid #373d20;
+    border-radius: 7%;
+}
+
+
+h2 {
+    margin: 10px 0px;
+    color: #708d81;
+}
+
+#rules{
+    display: block;
+    font-size: 15px;
+    margin: 0px 32px;
+   
+}
+
 .computer {
     grid-column: 3 / 4;
     grid-row: 1 / 1;
@@ -66,11 +97,8 @@ body {
 .fas {
     color: black;
     /* background-color:  */
-
     font-size: 80px;
-
 }
-
 
 
 
@@ -85,34 +113,53 @@ body {
     background-color: #b7b7a4;
     font-size: 20px;
     border-radius: 30%;
+    padding: 5px;
+    margin: 5px;
+
 }
-.reset {
-    color: black; 
-    background-color: #b7b7a4;
-    font-size: 20px;
-    border-radius: 30%;
-}
+
 .next-turn {
     color: black; 
     background-color: #b7b7a4;
     font-size: 20px;
     border-radius: 30%;
+    padding: 5px;
+    margin: 5px;
 }
 
-/* .buttons:hover { */
-    /* color: #ffe8d6;  */
-    /* background-color: #a5a58d; */
-    /* border: 2px solid #6b705c; */
-    /* border-radius: 20%; */
-    /* opacity: 60%; */
-/* } */
+.deal:hover { 
+    color: black; 
+    background-color: #a5a58d;
+    border: 2px solid #6b705c;
+    border-radius: 20%;
+    opacity: 60%;
+    font-size: 24px;
+}
+
+.next-turn:hover { 
+    color: black; 
+    background-color: #a5a58d;
+    border: 2px solid #6b705c;
+    border-radius: 20%;
+    opacity: 60%;
+    font-size: 24px;
+}
 
 /* .decks {
     border: 1px solid black;
 } */
-.placeholder {
+
+#placeholder {
     grid-column: 3 / 4;
     grid-row: 3 / 3;
+    
+}
+#warPlaceholder{
+    grid-column: 3 / 4;
+    grid-row: 2 / 2;
+    font-weight: bold;
+    font-size: 30px;
+    align-self: end;
 }
 
 
