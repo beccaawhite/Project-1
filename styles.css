@@ -80,27 +80,37 @@ h2 {
     background-color: #b7b7a4;
     font-size: 20px;
     border-radius: 30%;
+    padding: 5px;
+    margin: 5px;
+
 }
-.reset {
-    color: black; 
-    background-color: #b7b7a4;
-    font-size: 20px;
-    border-radius: 30%;
-}
+
 .next-turn {
     color: black; 
     background-color: #b7b7a4;
     font-size: 20px;
     border-radius: 30%;
+    padding: 5px;
+    margin: 5px;
 }
 
-/* .buttons:hover { */
-    /* color: #ffe8d6;  */
-    /* background-color: #a5a58d; */
-    /* border: 2px solid #6b705c; */
-    /* border-radius: 20%; */
-    /* opacity: 60%; */
-/* } */
+.deal:hover { 
+    color: black; 
+    background-color: #a5a58d;
+    border: 2px solid #6b705c;
+    border-radius: 20%;
+    opacity: 60%;
+    font-size: 24px;
+}
+
+.next-turn:hover { 
+    color: black; 
+    background-color: #a5a58d;
+    border: 2px solid #6b705c;
+    border-radius: 20%;
+    opacity: 60%;
+    font-size: 24px;
+}
 
 /* .decks {
     border: 1px solid black;
