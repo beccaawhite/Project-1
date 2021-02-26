@@ -18,37 +18,20 @@ let shuffledDeck;
 /*----- cached element references -----*/ //what you SEE changing
 
 // selects middle deck container
-<<<<<<< HEAD
-const placeholder = document.getElementById('shuffled-deck-container');
-=======
 const placeholder = document.getElementById('placeholder');
 const warPlaceholder = document.getElementById('warPlaceholder');
->>>>>>> gh-pages
 const playerContainer = document.getElementById("playerHand");
 const computerContainer = document.getElementById("computerHand");
 const computerWinner = document.querySelector(".computer ");
 const playerWinner = document.querySelector(".player");
 
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> gh-pages
 /*----- event listeners -----*/
 document.querySelector(".deal")
     .addEventListener("click", dealCards);
 
 document.querySelector(".next-turn")
     .addEventListener("click", nextTurn);
-<<<<<<< HEAD
-
-// document.querySelector(".reset")
-//     .addEventListener("click", init)
-
-=======
->>>>>>> gh-pages
 
 
 /*----- functions -----*/
@@ -58,12 +41,6 @@ document.querySelector(".next-turn")
 init();
 
 function init() {
-<<<<<<< HEAD
-    // initialize scores // doesn't change here 
-
-
-=======
->>>>>>> gh-pages
 
     render();
 }
@@ -107,11 +84,7 @@ function getCards() {
 function renderDeck(deck, container) {
     container.innerHTML = [];
     const cardsHtml = deck.reduce(function (html, card) {
-<<<<<<< HEAD
-        return html + `<div class="card ${card.face}"></div>`
-=======
         return html + `<div class="card large ${card.face}"></div>`
->>>>>>> gh-pages
     }, []);
     container.innerHTML = cardsHtml;
 
@@ -151,11 +124,7 @@ function dealCards() {
 
 // function to get rid of back of card 
 function removeClass() {
-<<<<<<< HEAD
-    playerContainer.classList.remove("back-blue");
-=======
     playerContainer.classList.remove("back-red");
->>>>>>> gh-pages
     playerContainer.classList.remove("card");
     computerContainer.classList.remove("back-red");
     computerContainer.classList.remove("card");
@@ -196,31 +165,18 @@ function chickenDinner() {
 }
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> gh-pages
 function nextTurn() {
     // takes off the back of card decor
     removeClass();
     placeholder.innerHTML = ""
-<<<<<<< HEAD
-=======
     warPlaceholder.innerHTML = ""
 
     //shows what the values are in whats being compared
     // console.log(playerdeck[0].value)
     // console.log(computerdeck[0].value)
->>>>>>> gh-pages
 
     // if card values are the same, WAR
     if (playerdeck[0].value === computerdeck[0].value) {
-<<<<<<< HEAD
-        placeholder.innerHTML = "WAR"
-=======
-
->>>>>>> gh-pages
         if ((playerdeck.length > 3) && (computerdeck.length > 3)) {
             // call small war function if either deck is 
             bigWar(playerdeck, computerdeck)
@@ -267,11 +223,7 @@ function bigWar(deck1, deck2) {
         addArray(warcomp, playerdeck);
         console.log("player deck won")
         console.log(playerdeck);
-<<<<<<< HEAD
-        placeholder.innerHTML = "You won the war"
-=======
         placeholder.innerHTML = "You won the war!"
->>>>>>> gh-pages
     }
     else {
         addArray(warcomp, computerdeck);
@@ -279,11 +231,8 @@ function bigWar(deck1, deck2) {
         console.log("computer deck won")
         console.log(computerdeck);
         placeholder.innerHTML = "Computer won the war"
-<<<<<<< HEAD
-=======
         // placeholder.innerHTML = "Computer won the war"
 
->>>>>>> gh-pages
     }
     renderDeck(playerdeck, playerContainer);
     renderDeck(computerdeck, computerContainer);
@@ -326,13 +275,8 @@ function compareValues(pdeck, cdeck) {
     // if players top card is greater than comps top card
     // add both cards to end of player card array
     if (playerdeck[0].value > computerdeck[0].value) {
-<<<<<<< HEAD
-        console.log(playerdeck);
-        console.log(computerdeck);
-=======
         // console.log(playerdeck);
         // console.log(computerdeck);
->>>>>>> gh-pages
         let p1 = playerdeck.shift();
         let c1 = computerdeck.shift();
         playerdeck.push(p1);
