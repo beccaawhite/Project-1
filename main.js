@@ -24,6 +24,11 @@ const computerContainer = document.getElementById("computerHand");
 const computerWinner = document.querySelector(".computer ");
 const playerWinner = document.querySelector(".player");
 
+let playerName = prompt("Please enter your name")
+
+document.getElementById("player-name").innerHTML = playerName;
+
+
 
 /*----- event listeners -----*/
 document.querySelector(".deal")
@@ -40,6 +45,7 @@ document.querySelector(".next-turn")
 init();
 
 function init() {
+
 
     render();
 }
@@ -111,6 +117,7 @@ function dealCards() {
             computerdeck.push(shuffledDeck[i]);
         }
     }
+    this.disabled = true;
     updateCardCount();
     playerContainer.classList.add("back-red");
     playerContainer.classList.add("card");
@@ -288,3 +295,4 @@ function compareValues(pdeck, cdeck) {
     renderDeck(computerdeck, computerContainer)
     updateCardCount();
 }
+
