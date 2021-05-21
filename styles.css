@@ -8,7 +8,7 @@ body {
 .game-board {
     background-color: #ebeced;
     font-size: 20px;
-    height: 730px;
+    height: 800px;
     width: 700px;
     position: relative;
     text-align: center;
