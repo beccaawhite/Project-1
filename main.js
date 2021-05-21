@@ -24,10 +24,20 @@ const computerContainer = document.getElementById("computerHand");
 const computerWinner = document.querySelector(".computer ");
 const playerWinner = document.querySelector(".player");
 
-let playerName = prompt("Please enter your name")
+// let playerName = prompt("Please enter your name")
+// if (playerName == "" || playerName == " ") {
+//     playerName == Player
+// }
+// document.getElementById("player-name").innerHTML = playerName;
 
-document.getElementById("player-name").innerHTML = playerName;
+// const header = document.querySelector(".navbar-brand");
+// header.classList.add("card");
+// header.classList.add("back-blue");
+// header.classList.add("small");
 
+
+// playerContainer.classList.add("back-blue");
+// playerContainer.classList.add("card");
 
 
 /*----- event listeners -----*/
@@ -119,19 +129,19 @@ function dealCards() {
     }
     this.disabled = true;
     updateCardCount();
-    playerContainer.classList.add("back-red");
+    playerContainer.classList.add("back-blue");
     playerContainer.classList.add("card");
     playerContainer.classList.add("large");
-    computerContainer.classList.add("back-red");
+    computerContainer.classList.add("back-blue");
     computerContainer.classList.add("card");
     computerContainer.classList.add("large");
 }
 
 // function to get rid of back of card 
 function removeClass() {
-    playerContainer.classList.remove("back-red");
+    playerContainer.classList.remove("back-blue");
     playerContainer.classList.remove("card");
-    computerContainer.classList.remove("back-red");
+    computerContainer.classList.remove("back-blue");
     computerContainer.classList.remove("card");
 }
 
@@ -150,7 +160,7 @@ function chickenDinner() {
             playerWinner.style.fontSize = "25px"
             document.getElementById("player-score").innerHTML = "YOU WON! ";
             document.getElementById("computer-score").innerHTML = "Computer Lost";
-            playerContainer.classList.add("back-red");
+            playerContainer.classList.add("back-blue");
             playerContainer.classList.add("card");
             playerContainer.classList.add("large");
             computerContainer.innerHTML = ""
@@ -161,7 +171,7 @@ function chickenDinner() {
             computerWinner.style.fontSize = "25px"
             document.getElementById("player-score").innerHTML = "You Lost";
             document.getElementById("computer-score").innerHTML = "WINNER";
-            computerContainer.classList.add("back-red");
+            computerContainer.classList.add("back-blue");
             computerContainer.classList.add("card");
             computerContainer.classList.add("large");
             playerContainer.innerHTML = ""
@@ -212,7 +222,7 @@ function bigWar(deck1, deck2) {
         let c1 = computerdeck.shift();
         warcomp.push(c1)
     }
-    // to see the war decks and whats being compared 
+    // to see the war decks and whats being compared
     console.log(`warplay:`)
     console.log(warplay)
     console.log(`warcomp:`)

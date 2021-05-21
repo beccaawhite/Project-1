@@ -8,31 +8,44 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="card-deck-css/css/cardstarter.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     
     <script defer src="main.js"></script>
 </head>
 <body>
 
-    <div class="game-rules">
-        <div class="game-title">
-            <div id="rules1">
-                <h2>WAR</h2>
-                To begin game, click <strong>"Deal Cards."</strong> The goal of the game is to win all 52 cards. 
-                Click the <strong>"Draw Card"</strong> to start each round - this will play the top card 
-                 of your deck. 
-            </div>
-            <div id="rules2">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- <a class="navbar-brand" href="#">WAR</a> -->
+        <div class="dropdown">
+            <button class="dropbtn">About</button>
+            <div class="dropdown-content">
                 The players card largest in value will receive both cards. 
                 If your card is the same value to the computers, 
                 then it is war! Three additional cards are pulled and the last card is compared. 
                 Whichever players last card is largest in value, will recieve all cards.
             </div>
         </div>
-    </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">How to play</button>
+            <div class="dropdown-content">
+                To begin game, click <strong>"Deal Cards."</strong> The goal of the game is to win all 52 cards. 
+                Click the <strong>"Draw Card"</strong> to start each round - this will play the top card 
+                of your deck. 
+            </div>
+        </div>
+
+    </nav>
+
+    
 
     <div class="game-board">
+
+        
+
         <div class="computer">
             <div class="avatar" id="computer-avatar">
                 <i class="fas fa-robot"></i>
