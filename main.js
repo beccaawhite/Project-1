@@ -24,11 +24,11 @@ const computerContainer = document.getElementById("computerHand");
 const computerWinner = document.querySelector(".computer ");
 const playerWinner = document.querySelector(".player");
 
-// let playerName = prompt("Please enter your name")
-// if (playerName == "" || playerName == " ") {
-//     playerName == Player
-// }
-// document.getElementById("player-name").innerHTML = playerName;
+let yourName = prompt("Please enter your name")
+if (yourName == "" || yourName == " ") {
+    yourName == Player
+}
+document.getElementById("player-name").innerHTML = yourName;
 
 // const header = document.querySelector(".navbar-brand");
 // header.classList.add("card");
